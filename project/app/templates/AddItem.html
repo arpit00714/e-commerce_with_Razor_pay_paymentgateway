@@ -1,0 +1,48 @@
+{% extends "Base.html" %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .form{
+            margin: 20px;
+            border: 2px solid rgba(151, 75, 223, 0.568);
+            padding: 20px;
+            width: 60%;
+            height: 360px;
+            border-radius: 20px;
+            background-color: rgba(146, 255, 219, 0.678);
+        }
+        .form input{
+            border-radius: 5px;
+            padding: 3px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <form class="form" action="{% url 'Productdata' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <br> <br> <br> <br>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Name</label>
+          <input type="text" class="form-control" name="name" aria-describedby="emailHelp">
+        </div> <br> <br>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Price</label>
+          <input type="tel" class="form-control" name="price" aria-describedby="emailHelp">
+        </div> <br> <br>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Image</label>
+          <input type="file" class="form-control" name="img" aria-describedby="emailHelp">
+        </div> <br> <br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </center>
+</body>
+</html>
+{% endblock %}

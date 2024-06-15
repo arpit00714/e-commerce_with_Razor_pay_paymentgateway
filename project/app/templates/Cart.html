@@ -1,0 +1,138 @@
+{% extends "Base.html" %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+      
+      .mm{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-items: center;
+        border: 0.1px solid rgb(189, 176, 130);
+        padding: 50px;
+        background-color: rgba(209, 231, 240, 0.527);
+        width: 90%;
+      }
+    .product-card {
+  width: 280px;
+  /* height: 300px; */
+  border: 1px solid #131313;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+  margin-left: 25px;
+    }
+
+.product-card:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.product-image img {
+  width: 100%;
+  /* height: auto; */
+  height: 200px;
+}
+
+.product-info {
+  padding: 15px;
+}
+
+.product-info h5 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  line-height: 1.2;
+}
+.product-info p {
+  margin: 0;
+  font-size: 16px;
+  color: #777;
+}
+.aa{
+  margin-left: 230px;
+}
+.pay{
+  text-align: center;
+  margin: 20px;
+}
+.pay h2{
+  color: blueviolet;
+}
+.pay button{
+  padding: 4px;
+  background-color: #131313;
+  color: white;
+  border-radius: 5px;
+}
+.payraz{
+  text-align: center;
+  margin: 20px;
+  background-color: black;
+  /* color: white; */
+  padding: 7px;
+}
+
+    </style>
+</head>
+<body>
+  <br> <br>
+  <div class="main">
+  <div class="mm">
+       {% if Cartdetails %}
+        {% for i in Cartdetails %}
+        <div class="product-card">
+            <div class="product-image">
+              <img src="{{media_url}}{{i.Img}}" alt="{{ i.Name }}">
+            </div>
+            <div class="product-info">
+                <h5>{{ i.Nm }}</h5>
+                <p> Price:{{ i.Pr }}</p><br>
+                <a class="aa" href="{% url 'Delete' pk=i.id %}"><i class="fa-solid fa-trash-can fa-beat fa-lg"></i></a>
+            </form>
+        </div>
+    </div>
+    {% endfor %}
+         {% endif %}
+        </div>
+        <div class="pay">
+         <form action="{% url 'Payment' %}" method="post">
+           {% csrf_token%}  
+           <h2>TotalAmout:{{TotalAmount}}</h2>
+           <input type="text" name="amount" value="{{TotalAmount}}" hidden>
+           <button class="btn btn-primary"> Pay Now </button>
+          </form>
+        </div>
+      </div>
+      <br> <br>
+
+        {% if payment %}
+<form action="{% url 'payment-status' %}" method="post" class="payraz">
+    {% csrf_token %}
+    <script
+            src="https://checkout.razorpay.com/v1/checkout.js"
+            data-key="rzp_test_3LJ7CBlMbFfwT6"
+            data-amount="{{ payment.amount }}"
+            data-currency="{{ payment.currency }}"
+            data-order_id="{{ payment.id }}"
+            data-buttontext="Pay with Razorpay"
+            data-name="Arpit Ecom"
+            data-description="Thanku for visiting My Site"
+            data-image="https://example.com/your_logo.jpg"
+            data-prefill.name="Arpit khare"
+            data-prefill.email="arpitkhare14@gmail.com"
+            data-theme.color="#F37254"
+    ></script>
+    <input type="hidden" custom="Hidden Element" name="hidden">
+</form>
+{% endif %}
+</body>
+</html>
+{% endblock %}

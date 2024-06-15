@@ -1,0 +1,54 @@
+{% extends "Base.html" %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .Res
+        {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          border: 1px solid;
+          padding: 100px;
+          width: 50%;
+          border-radius: 20px;
+          margin: 10px;
+          background-color: rgba(160, 126, 192, 0.301);
+        }
+        form input{
+            padding: 6px;
+            border-radius: 5px;
+            box-shadow: 1px 1px 1px black;
+            width: 250px;
+        }
+        button{
+            padding: 5px;
+            width: 100px;
+            box-shadow: 1px 1px 1px black;
+            background-color: rgba(79, 218, 218, 0.527);
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <div class="Res">
+        <form action="{% url 'Registerdata' %}" method="post">
+            {% csrf_token %}
+            <input type="text" name="name" placeholder="Enter Name"> <br> <br>
+            <input type="email" name="email" placeholder="Enter Email"> <br> <br>
+            <input type="password" name="password" placeholder="Password"> <br> <br>
+            <input type="password" name="cpassword" placeholder="Confirm Password"> <br> <br>
+            <button type="submit">submit</button>
+        </form>
+    </div>
+</center>
+</body>
+</html>
+
+{% endblock %}

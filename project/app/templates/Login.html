@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <style>
+     form{
+        padding: 60px;
+        border: 1px solid;
+        width: 30%;
+        height: 200px;
+        background-color: rgb(209, 205, 205);
+        border-radius: 10px;
+        margin-top: 30px;
+        padding-top: 150px;
+    }
+    form input{
+        border-radius: 5px;
+        height: 30px;
+        width: 300px;
+    }
+    button{
+        padding: 4px;
+        width: 100px;
+        border-radius: 5px;
+        background-color:  #45708df5;
+        color: white;
+    }
+    @media screen and (max-width: 720px) {
+        form{
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    select{
+        width: 200px;
+    }
+   </style>
+</head>
+<body>
+    <center>
+    <form action="{% url 'logindata' %}" method="post">
+        {% csrf_token %}
+        <input type="email" name="email" placeholder="Email">  <br> <br>
+        <input type="password" name="password" placeholder="Password"> <br> <br>
+        <select id="role" name="role">
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+        </select> <br> <br>
+        <button type="submit" >Login</button>
+    </form>
+    <br> <br>
+</center>
+</body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "Base.html" %}
+{% load static %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center> <div class="conbg" > 
+        <center><h1>Contact Us</h1> </center>
+        <center>
+            <br />
+            <div>
+                <div class="head" style="background-color:#124076 ;  width: 50%; color:white; padding:10px">
+                    connect with us
+                </div>   
+                  <div class="message">
+                    <form action="{% url 'Contact' %}" method="post">
+                        {% csrf_token %}
+                    <input type="text" placeholder="Name" name="name" /> <br /> <br>
+                    <input type="email" placeholder="Email"  name="email" /> <br /> <br>
+                    Message <br /><input type="text" name="msg" style="height: 80px " />  <br /> <br>
+                    <button>Send mail</button>
+                </form>
+                </div>
+            </div>
+        </center>
+        </div>
+        </center>
+        <br> <br>
+</body>
+</html>
+{% endblock %}

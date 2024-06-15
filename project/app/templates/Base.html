@@ -1,0 +1,134 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <div class="middlediv">
+        <div>
+          <h1 style="font-style: italic; color: blueviolet">Stylish</h1>
+          <p style="color: rgba(88, 87, 87, 0.473)">Online Store</p>
+        </div>
+
+        {% if logindetails.Em %}
+       
+        <div>
+          <ul>
+            <li>
+              <a href="{% url 'Index' %}" style="color: #050505; text-decoration: none; font-weight: bolder">Home</a>
+            </li>
+            <li><button><a style="color: white;" href="{% url 'About' %}">About Shoe</a></button></li>
+            <li>
+              <a href="{% url 'Contact' %}" style="color: #050505; text-decoration: none; font-weight: bolder">Contact</a>
+            </li>
+            <li><a style="color: #050505; text-decoration: none; font-weight: bolder"  href="{% url 'Product' %}">Products</a></li>
+            <li><button style="background-color: rgb(226, 23, 23);"><a style=" color: white;text-decoration: none; font-weight: bolder" href="{% url 'Logout' %}">Logout</a></button></li>
+            <li>
+              {{leng}}<a style="color: #050505; text-decoration: none; font-weight: bolder" href="{% url 'Cart' %}"><i class="fa-solid fa-cart-shopping" style="color: #020202cb"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      {% elif adminDetails.AE %}
+    <div>
+      <ul>
+        <li>
+          <a href="{% url 'Index' %}" style="color: #050505; text-decoration: none; font-weight: bolder;">Home</a>
+        </li>
+        <li><a style="color: #050505; text-decoration: none; font-weight: bolder" href="{% url 'Product' %}">Products</a></li>
+        <li><a style="color: #050505; text-decoration: none; font-weight: bolder" href="{% url 'AddProduct' %}">AddProducts</a></li>
+        <li><button style="background-color: rgb(226, 22, 22); "><a style="color:white; text-decoration: none; font-weight: bolder" href="{% url 'Logout' %}">Logout</a></button></li>
+      
+      </ul>
+    </div>
+  </div>
+
+        {% else %}
+        <div>
+          <ul>
+            <li>
+              <a href="{% url 'Index' %}" style="color: #050505; text-decoration: none; font-weight: bolder">Home</a>
+            </li>
+            <li><button><a style="color: white;" href="{% url 'About' %}">About Shoe</a></button></li>
+            <li><a style="color: #050505; text-decoration: none; font-weight: bolder" href="{% url 'Product' %}">Products</a></li>
+            <li><a style="color: #050505; text-decoration: none; font-weight: bolder" href="{% url 'Register' %}">Register</a></li>
+            <li><a style="color: #050505; text-decoration: none; font-weight: bolder" href="{% url 'Login' %}">Login</a></li>
+          </ul>
+        </div>
+        </div>
+
+        
+      {% endif %}
+
+      {% block content %}
+
+
+      {% endblock %}
+
+      <div class="footer">
+        <div>
+          <h3>Info</h3>
+          <p>Track Your Order</p>
+          <p>Our Blocks</p>
+          <p>Privacy policy</p>
+          <p>Shipping</p>
+          <p>Contact Us</p>
+          <p>Community</p>
+        </div>
+        <div>
+          <h3>About</h3>
+          <p>Histroy</p>
+          <p>Our Team</p>
+          <p>Services</p>
+          <p>Company</p>
+          <p>Wholesale</p>
+          <p>Retail</p>
+        </div>
+        <div>
+          <h3>Women Shoes</h3>
+          <p>Track Your Order</p>
+          <p>Our Blog</p>
+          <p>Privacy policy</p>
+          <p>Shipping</p>
+          <p>Contact Us</p>
+          <p>Help</p>
+        </div>
+        <div>
+          <h3>Popular</h3>
+          <p>Prices Drop</p>
+          <p>New Products</p>
+          <p>Best Sales</p>
+          <p>Stores</p>
+          <p>Login</p>
+          <p>Cart</p>
+        </div>
+        <div>
+          <h3>Mens Collection</h3>
+          <p>Delivery</p>
+          <p>About Us</p>
+          <p>Shoes</p>
+          <p>Contact Us</p>
+        </div>
+        <div>
+          <h3>Get In Touch</h3>
+          <p>
+            Stylish Online Store 123 <br />
+            Main Street, Toulouse - <br />
+            France. Call us: (+33) 800 456 <br />
+            789-987
+          </p>
+          <h4>contact@yourwebsite.com</h4>
+        </div>
+      </div>
+      <script src="HomeArrow.js"></script>
+      <script src="mouseEvnt.js"></script>
+    </body>
+</body>
+</html>
